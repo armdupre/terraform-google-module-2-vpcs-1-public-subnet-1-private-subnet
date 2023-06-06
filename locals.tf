@@ -45,7 +45,7 @@ locals {
 		"${local.AppName}-app",
 		"${local.AppName}-agent"
 	]
-	Preamble = "${local.LoginIdTag}-${local.UserProjectTag}"
+	Preamble = "${local.UserLoginTag}-${local.UserProjectTag}"
 	PrivateVpcNetworkName = "${local.Preamble}-test-01-vpc-network"
 	PrivateSubnetName = "${local.Preamble}-test-01-subnet"
 	PrivateSubnetIpRange = "10.0.2.0/24"
