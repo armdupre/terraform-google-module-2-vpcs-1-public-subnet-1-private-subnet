@@ -11,12 +11,12 @@ variable "RegionName" {
 
 variable "UserLoginTag" {
 	default = "terraform"
-	description = "Login ID tag of user creating the stack"
+	description = "Login ID tag of user creating the deployment"
 	type = string
 }
 
 variable "UserProjectTag" {
 	default = "example"
-	description = "Project tag of user creating the stack"
+	description = "Project tag of user creating the deployment"
 	type = string
 }
