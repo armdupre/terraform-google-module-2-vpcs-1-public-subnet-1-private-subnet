@@ -3,7 +3,7 @@ variable "PublicFirewallRulePorts" {
 		"22",
 		"80",
 		"443",
-		"3389"
+		"3389",
 		"30422"
 	]
 	type = list(string)
@@ -22,6 +22,7 @@ variable "RegionName" {
 
 variable "Tag" {
 	default = "gcp"
+	description = "App ID tag of application using the deployment"
 	type = string
 }
 
@@ -29,10 +30,20 @@ variable "UserLoginTag" {
 	default = "terraform"
 	description = "Login ID tag of user creating the deployment"
 	type = string
+	validation {
+		condition = length(var.UserLoginTag) >= 4
+		error_message = "UserLoginTag minimum length must be >= 4."
+	}
 }
 
 variable "UserProjectTag" {
 	default = "example"
 	description = "Project tag of user creating the deployment"
+	type = string
+}
+
+variable "Version" {
+	default = "demo"
+	description = "Versioning of the application using the deployment"
 	type = string
 }
