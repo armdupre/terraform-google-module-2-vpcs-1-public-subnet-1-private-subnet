@@ -1,5 +1,17 @@
 locals {
-	AppName = "ixnetwork"
+	AppName = var.AppName
+	ComputeFirewallRuleName = "${local.Preamble}-compute-firewall-rule"
+	ComputeFirewallRuleDirection = "INGRESS"
+	ComputeFirewallRulePriority = "1002"
+	ComputeFirewallRulePorts = [
+		"7443"
+	]
+	ComputeFirewallRuleNetworkTargetTags = [
+		"cyperf-license"
+	]
+	ComputeFirewallRuleSourceIpRanges = [
+		"0.0.0.0/0"
+	]
 	ConsoleFirewallRuleName = "${local.Preamble}-console-firewall-rule"
 	ConsoleFirewallRuleDirection = "INGRESS"
 	ConsoleFirewallRulePriority = "1001"
@@ -45,7 +57,7 @@ locals {
 		"${local.AppName}-app",
 		"${local.AppName}-agent"
 	]
-	Preamble = "${local.UserLoginTag}-${local.UserProjectTag}"
+	Preamble = "${local.UserLoginTag}-${local.UserProjectTag}-${local.AppName}"
 	PrivateVpcNetworkName = "${local.Preamble}-test-01-vpc-network"
 	PrivateSubnetName = "${local.Preamble}-test-01-subnet"
 	PrivateSubnetIpRange = "10.0.2.0/24"
@@ -69,12 +81,7 @@ locals {
 	PublicFirewallRuleName = "${local.Preamble}-management-firewall-rule"
 	PublicFirewallRuleDirection = "INGRESS"
 	PublicFirewallRulePriority = "1000"
-	PublicFirewallRulePorts = [
-		"22",
-		"80",
-		"443",
-		"3389"
-	]
+	PublicFirewallRulePorts = var.PublicFirewallRulePorts
 	PublicFirewallRuleNetworkTargetTags = [
 		"${local.AppName}-app",
 		"${local.AppName}-agent"

@@ -38,6 +38,20 @@ resource "google_compute_firewall" "PublicFirewallRule" {
 	target_tags = local.PublicFirewallRuleNetworkTargetTags
 }
 
+resource "google_compute_firewall" "ComputeFirewallRule" {
+	name = local.ComputeFirewallRuleName
+	allow {
+		protocol = "tcp"
+		ports = local.ComputeFirewallRulePorts
+	}
+	direction = local.ComputeFirewallRuleDirection
+	disabled = "false"
+	network = google_compute_network.PublicVpcNetwork.self_link
+	priority = local.ComputeFirewallRulePriority
+	source_ranges = local.ComputeFirewallRuleSourceIpRanges
+	target_tags = local.ComputeFirewallRuleNetworkTargetTags
+}
+
 resource "google_compute_firewall" "ConsoleFirewallRule" {
 	name = local.ConsoleFirewallRuleName
 	allow {
