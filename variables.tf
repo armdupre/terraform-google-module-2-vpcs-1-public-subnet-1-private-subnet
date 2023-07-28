@@ -37,7 +37,7 @@ variable "UserLoginTag" {
 }
 
 variable "UserProjectTag" {
-	default = "example"
+	default = "module"
 	description = "Project tag of user creating the deployment"
 	type = string
 }

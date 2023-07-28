@@ -4,7 +4,7 @@
 Terraform module for VPC deployment on Google Cloud Platform
 
 ## Deployment
-This module creates a topology with two virtual private clouds, each having a single public facing subnet and a single private subnet.
+This module creates a topology with two virtual private clouds, one having a single public facing subnet and the other having a single private subnet.
 
 ## Usage
 ```tf
