@@ -1,3 +1,9 @@
+variable "InstanceId" {
+	default = "vpc"
+	description = "Id of the instance of this module that ensures uniqueness"
+	type = string
+}
+
 variable "PublicFirewallRulePorts" {
 	default = [
 		"22",
