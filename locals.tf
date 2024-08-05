@@ -58,7 +58,7 @@ locals {
 	]
 	InstanceId = var.InstanceId
 	Preamble = "${local.UserLoginTag}-${local.UserProjectTag}-${local.Tag}-${local.Version}-${local.InstanceId}"
-	PrivateVpcNetworkName = "${local.Preamble}-private-vpc-network"
+	PrivateVpcNetworkName = replace("${local.Preamble}-private-vpc-network", "_", "-")
 	PrivateSubnetName = "${local.Preamble}-private-subnet"
 	PrivateSubnetIpRange = "10.0.2.0/24"
 	PrivateFirewallRuleName = "${local.Preamble}-private-firewall-rule"
@@ -75,7 +75,7 @@ locals {
 	PrivateFirewallRuleTargetTags = [
 		"${local.Tag}-agent"
 	]
-	PublicVpcNetworkName = "${local.Preamble}-public-vpc-network"
+	PublicVpcNetworkName = replace("${local.Preamble}-public-vpc-network", "_", "-")
 	PublicSubnetName = "${local.Preamble}-public-subnet"
 	PublicSubnetIpRange = "10.0.10.0/24"
 	PublicFirewallRuleName = "${local.Preamble}-public-firewall-rule"
