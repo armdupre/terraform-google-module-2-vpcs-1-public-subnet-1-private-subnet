@@ -1,5 +1,5 @@
 locals {
-	ComputeFirewallRuleName = "${local.Preamble}-compute-firewall-rule"
+	ComputeFirewallRuleName = replace("${local.Preamble}-compute-firewall-rule", "_", "-")
 	ComputeFirewallRuleDirection = "INGRESS"
 	ComputeFirewallRulePriority = "1002"
 	ComputeFirewallRulePorts = [
@@ -11,7 +11,7 @@ locals {
 	ComputeFirewallRuleSourceIpRanges = [
 		"0.0.0.0/0"
 	]
-	ConsoleFirewallRuleName = "${local.Preamble}-console-firewall-rule"
+	ConsoleFirewallRuleName = replace("${local.Preamble}-console-firewall-rule", "_", "-")
 	ConsoleFirewallRuleDirection = "INGRESS"
 	ConsoleFirewallRulePriority = "1001"
 	ConsoleFirewallRulePorts = [
@@ -44,7 +44,7 @@ locals {
 		"216.58.192.0/19",
 		"216.239.32.0/19"
 	]
-	ControlFirewallRuleName = "${local.Preamble}-control-firewall-rule"
+	ControlFirewallRuleName = replace("${local.Preamble}-control-firewall-rule", "_", "-")
 	ControlFirewallRuleDirection = "INGRESS"
 	ControlFirewallRulePriority = "1003"
 	ControlFirewallRulePorts = "all"
@@ -76,7 +76,7 @@ locals {
 		"${local.Tag}-agent"
 	]
 	PublicVpcNetworkName = replace("${local.Preamble}-public-vpc-network", "_", "-")
-	PublicSubnetName = "${local.Preamble}-public-subnet"
+	PublicSubnetName = replace("${local.Preamble}-public-subnet", "_", "-")
 	PublicSubnetIpRange = "10.0.10.0/24"
 	PublicFirewallRuleName = replace("${local.Preamble}-public-firewall-rule", "_", "-")
 	PublicFirewallRuleDirection = "INGRESS"
