@@ -59,9 +59,9 @@ locals {
 	InstanceId = var.InstanceId
 	Preamble = "${local.UserLoginTag}-${local.UserProjectTag}-${local.Tag}-${local.Version}-${local.InstanceId}"
 	PrivateVpcNetworkName = replace("${local.Preamble}-private-vpc-network", "_", "-")
-	PrivateSubnetName = "${local.Preamble}-private-subnet"
+	PrivateSubnetName = replace("${local.Preamble}-private-subnet", "_", "-")
 	PrivateSubnetIpRange = "10.0.2.0/24"
-	PrivateFirewallRuleName = "${local.Preamble}-private-firewall-rule"
+	PrivateFirewallRuleName = replace("${local.Preamble}-private-firewall-rule", "_", "-")
 	PrivateFirewallRuleDirection = "INGRESS"
 	PrivateFirewallRulePriority = "1000"
 	PrivateFirewallRulePorts = "all"
@@ -78,7 +78,7 @@ locals {
 	PublicVpcNetworkName = replace("${local.Preamble}-public-vpc-network", "_", "-")
 	PublicSubnetName = "${local.Preamble}-public-subnet"
 	PublicSubnetIpRange = "10.0.10.0/24"
-	PublicFirewallRuleName = "${local.Preamble}-public-firewall-rule"
+	PublicFirewallRuleName = replace("${local.Preamble}-public-firewall-rule", "_", "-")
 	PublicFirewallRuleDirection = "INGRESS"
 	PublicFirewallRulePriority = "1000"
 	PublicFirewallRulePorts = var.PublicFirewallRulePorts
