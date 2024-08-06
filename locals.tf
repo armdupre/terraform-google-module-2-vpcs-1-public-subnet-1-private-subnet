@@ -1,5 +1,5 @@
 locals {
-	ComputeFirewallRuleName = replace("${local.Preamble}-compute-firewall-rule", "_", "-")
+	ComputeFirewallRuleName = "${local.Preamble}-compute-firewall-rule"
 	ComputeFirewallRuleDirection = "INGRESS"
 	ComputeFirewallRulePriority = "1002"
 	ComputeFirewallRulePorts = [
@@ -11,7 +11,7 @@ locals {
 	ComputeFirewallRuleSourceIpRanges = [
 		"0.0.0.0/0"
 	]
-	ConsoleFirewallRuleName = replace("${local.Preamble}-console-firewall-rule", "_", "-")
+	ConsoleFirewallRuleName = "${local.Preamble}-console-firewall-rule"
 	ConsoleFirewallRuleDirection = "INGRESS"
 	ConsoleFirewallRulePriority = "1001"
 	ConsoleFirewallRulePorts = [
@@ -44,7 +44,7 @@ locals {
 		"216.58.192.0/19",
 		"216.239.32.0/19"
 	]
-	ControlFirewallRuleName = replace("${local.Preamble}-control-firewall-rule", "_", "-")
+	ControlFirewallRuleName = "${local.Preamble}-control-firewall-rule"
 	ControlFirewallRuleDirection = "INGRESS"
 	ControlFirewallRulePriority = "1003"
 	ControlFirewallRulePorts = "all"
@@ -57,11 +57,11 @@ locals {
 		"${local.Tag}-agent"
 	]
 	InstanceId = var.InstanceId
-	Preamble = "${local.UserLoginTag}-${local.UserProjectTag}-${local.Tag}-${local.Version}-${local.InstanceId}"
-	PrivateVpcNetworkName = replace("${local.Preamble}-private-vpc-network", "_", "-")
-	PrivateSubnetName = replace("${local.Preamble}-private-subnet", "_", "-")
+	Preamble = replace("${local.UserLoginTag}-${local.UserProjectTag}-${local.Tag}-${local.Version}-${local.InstanceId}", "_", "-")
+	PrivateVpcNetworkName = "${local.Preamble}-private-vpc-network"
+	PrivateSubnetName = "${local.Preamble}-private-subnet"
 	PrivateSubnetIpRange = "10.0.2.0/24"
-	PrivateFirewallRuleName = replace("${local.Preamble}-private-firewall-rule", "_", "-")
+	PrivateFirewallRuleName = "${local.Preamble}-private-firewall-rule"
 	PrivateFirewallRuleDirection = "INGRESS"
 	PrivateFirewallRulePriority = "1000"
 	PrivateFirewallRulePorts = "all"
@@ -75,10 +75,10 @@ locals {
 	PrivateFirewallRuleTargetTags = [
 		"${local.Tag}-agent"
 	]
-	PublicVpcNetworkName = replace("${local.Preamble}-public-vpc-network", "_", "-")
-	PublicSubnetName = replace("${local.Preamble}-public-subnet", "_", "-")
+	PublicVpcNetworkName = "${local.Preamble}-public-vpc-network"
+	PublicSubnetName = "${local.Preamble}-public-subnet"
 	PublicSubnetIpRange = "10.0.10.0/24"
-	PublicFirewallRuleName = replace("${local.Preamble}-public-firewall-rule", "_", "-")
+	PublicFirewallRuleName = "${local.Preamble}-public-firewall-rule"
 	PublicFirewallRuleDirection = "INGRESS"
 	PublicFirewallRulePriority = "1000"
 	PublicFirewallRulePorts = var.PublicFirewallRulePorts
