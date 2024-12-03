@@ -9,7 +9,7 @@ This module creates a topology with two virtual private clouds, one having a sin
 ## Usage
 ```tf
 module "Vpc" {
-	source = "armdupre/module-2-vpcs-1-public-subnet-1-private-subnet/google"
+	source = "git::https://github.com/armdupre/terraform-google-module-2-vpcs-1-public-subnet-1-private-subnet.git"
 	PublicFirewallRuleSourceIpRanges = [ "1.1.1.1/32" ]
 }
 ```
