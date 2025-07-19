@@ -1,6 +1,7 @@
 resource "google_compute_network" "PublicVpcNetwork" {
 	name = local.PublicVpcNetworkName
 	auto_create_subnetworks = "false"
+	mtu = local.PublicVpcNetworkMtu
 	routing_mode = "REGIONAL"
 }
 
@@ -14,6 +15,7 @@ resource "google_compute_subnetwork" "PublicSubnet" {
 resource "google_compute_network" "PrivateVpcNetwork" {
 	name = local.PrivateVpcNetworkName
 	auto_create_subnetworks = "false"
+	mtu = local.PrivateVpcNetworkMtu
 	routing_mode = "REGIONAL"
 }
 

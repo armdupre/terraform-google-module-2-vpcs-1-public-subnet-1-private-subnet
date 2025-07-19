@@ -4,6 +4,16 @@ variable "InstanceId" {
 	type = string
 }
 
+variable "PrivateVpcNetworkMtu" {
+	default = 1460
+	description = "Maxium Transmission Unit associated with the private vpc network"
+	type = number
+	validation {
+		condition = contains([1460, 1500, 8896], var.PrivateVpcNetworkMtu)
+		error_message = "PrivateVpcNetworkMtu must be one of (1460 | 1500 | 8896) values."
+	}
+}
+
 variable "PublicFirewallRulePorts" {
 	default = [
 		"22",
@@ -18,6 +28,16 @@ variable "PublicFirewallRulePorts" {
 variable "PublicFirewallRuleSourceIpRanges" {
 	description = "List of IP Addresses /32 or IP CIDR ranges connecting inbound to App"
 	type = list(string)
+}
+
+variable "PublicVpcNetworkMtu" {
+	default = 1460
+	description = "Maxium Transmission Unit associated with the public vpc network"
+	type = number
+	validation {
+		condition = contains([1460, 1500, 8896], var.PublicVpcNetworkMtu)
+		error_message = "PublicVpcNetworkMtu must be one of (1460 | 1500 | 8896) values."
+	}
 }
 
 variable "RegionName" {
