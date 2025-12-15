@@ -1,16 +1,4 @@
 locals {
-	ComputeFirewallRuleName = "${local.Preamble}-compute-firewall-rule"
-	ComputeFirewallRuleDirection = "INGRESS"
-	ComputeFirewallRulePriority = "1002"
-	ComputeFirewallRulePorts = [
-		"7443"
-	]
-	ComputeFirewallRuleNetworkTargetTags = [
-		"cyperf-license"
-	]
-	ComputeFirewallRuleSourceIpRanges = [
-		"0.0.0.0/0"
-	]
 	ControlFirewallRuleName = "${local.Preamble}-control-firewall-rule"
 	ControlFirewallRuleDirection = "INGRESS"
 	ControlFirewallRulePriority = "1003"

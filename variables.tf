@@ -10,7 +10,10 @@ variable "PrivateVpcNetworkMtu" {
 	type = number
 	validation {
 		condition = contains([1460, 1500, 8896], var.PrivateVpcNetworkMtu)
-		error_message = "PrivateVpcNetworkMtu must be one of (1460 | 1500 | 8896) values."
+		error_message = <<EOF
+PrivateVpcNetworkMtu must be one of the following values:
+	1460, 1500, 8896
+		EOF
 	}
 }
 
@@ -69,7 +72,7 @@ variable "UserProjectTag" {
 }
 
 variable "Version" {
-	default = "11-00"
+	default = "11-20"
 	description = "Versioning of the application using the deployment"
 	type = string
 }
