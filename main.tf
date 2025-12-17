@@ -54,6 +54,19 @@ resource "google_compute_firewall" "IapFirewallRule" {
 	target_tags = local.IapFirewallRuleNetworkTargetTags
 }
 
+resource "google_compute_firewall" "ControlFirewallRule" {
+	name = local.ControlFirewallRuleName
+	allow {
+		protocol = local.ControlFirewallRulePorts
+	}
+	direction = local.ControlFirewallRuleDirection
+	disabled = "false"
+	network = google_compute_network.PublicVpcNetwork.self_link
+	priority = local.ControlFirewallRulePriority
+	source_tags = local.ControlFirewallRuleSourceTags
+	target_tags = local.ControlFirewallRuleTargetTags
+}
+
 resource "google_compute_firewall" "PrivateFirewallRule" {
 	name = local.PrivateFirewallRuleName
 	allow {
